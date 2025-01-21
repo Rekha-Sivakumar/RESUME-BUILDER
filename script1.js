@@ -32,6 +32,11 @@ const hobbyContainer = document.getElementById("hobbies-container");
 
 
 
+
+const mediaContainer = document.getElementById
+("media-container");
+
+
     const resumeForm = document.getElementById("resume-form");
 
 
@@ -230,7 +235,7 @@ const hobbyContainer = document.getElementById("hobbies-container");
         let certificationHTML = "";
        let langHTML = "";
        let hobbyHTML = "";
-       
+       let mediaHTML ="";
  
        
 
@@ -252,7 +257,7 @@ const hobbyContainer = document.getElementById("hobbies-container");
             if (degree && institution && year&&percentage) {
 
                 educationHTML += `
-                   <tr><td> <strong>${degree}</strong></td><td> ${year} </td><td>${institution}.</td><td> ${percentage} </td></tr>               `;
+                   <tr><td> <strong>${year}</strong></td><td> ${degree} </td><td>${institution}.</td><td> ${percentage} </td></tr>               `;
             }
         });
 
@@ -374,6 +379,32 @@ const hobbyContainer = document.getElementById("hobbies-container");
                 `;
             }
         });
+       
+        const mediaEntries = mediaContainer.querySelectorAll(".media-entry");
+        mediaEntries.forEach(entry => {
+            const inputs = entry.querySelectorAll("input");
+            const linkedin = inputs[0].value;
+            const facebook = inputs[1].value;
+            const twitter = inputs[2].value;
+            if (linkedin||facebook||twitter) {
+                mediaHTML += `            <h2>Social Media</h2> 
+                    
+                    `;}
+            if (linkedin) {
+                mediaHTML += `           
+                    <p>Linkedin : ${linkedin}</p>
+                    `;}
+            if (facebook) {
+                mediaHTML += `            
+                    <p>Facebook : ${facebook}</p>
+                    `;}
+            if (twitter) {
+                mediaHTML += `            
+                    <p>Twitter : ${twitter}</p>
+                    `;
+            
+            }
+        });
 
 
         // Check if personal details are filled
@@ -425,7 +456,7 @@ const hobbyContainer = document.getElementById("hobbies-container");
 
                             text-align: center;
 
-                            margin-bottom: 10px;
+                            margin-bottom: 5px;
 
                         }
 
@@ -437,7 +468,7 @@ const hobbyContainer = document.getElementById("hobbies-container");
 
                             border-bottom: 2px solid #007bff;
 
-                            margin-bottom: 15px;
+                            margin-bottom: 10px;
 
                             padding-bottom: 5px;
 
@@ -447,7 +478,7 @@ const hobbyContainer = document.getElementById("hobbies-container");
 
                             font-size: 16px;
 
-                            margin: 10px 0;
+                            margin: 5px 0;
 
                             line-height: 1.8;
                         }
@@ -468,11 +499,11 @@ const hobbyContainer = document.getElementById("hobbies-container");
 
                             background-color: #f8f9fa;
 
-                            padding: 15px;
+                            padding: 10px;
 
                             border-radius: 6px;
 
-                            margin-bottom: 20px;
+                            margin-bottom: 15px;
                         }
 
                         #download-btn {
@@ -555,6 +586,7 @@ ${experienceHTML ||""}
 
                     ${langHTML||" "}
                    ${hobbyHTML||" "}
+                   ${mediaHTML||" "}
                    
                     <button id="download-btn">Download as PDF</button>
 
